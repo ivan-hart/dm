@@ -1,0 +1,1 @@
+/sbin/c++ CMakeFiles/dm.dir/src/main.cpp.o CMakeFiles/dm.dir/src/glad.c.o CMakeFiles/dm.dir/src/window.cpp.o CMakeFiles/dm.dir/src/game.cpp.o CMakeFiles/dm.dir/src/resource_manager.cpp.o CMakeFiles/dm.dir/src/input_manager.cpp.o -o dm  /usr/lib/libSDL2main.a /usr/lib/libSDL2-2.0.so.0.3000.8 /usr/lib/libGL.so /usr/lib/libGLU.so
