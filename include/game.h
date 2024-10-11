@@ -3,6 +3,8 @@
 
 #include <window.h>
 #include <input_manager.h>
+#include <projection.h>
+#include <view.h>
 
 #include <glad/glad.h>
 #include <SDL2/SDL.h>
@@ -25,6 +27,8 @@ private:
     GLWindow *window;
     SDL_GLContext ctx;
     InputManager * inputManager;
+    View * view;
+    Projection * projection;
 
     bool InitSDL();
     bool InitWindow();

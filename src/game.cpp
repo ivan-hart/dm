@@ -95,6 +95,11 @@ bool Game::InitGameObjects()
     inputManager->AddInput("left", SDL_SCANCODE_A);
     inputManager->AddInput("escape", SDL_SCANCODE_ESCAPE);
 
+    projection = &Projection::GetInstance();
+    projection->SetProjection(glm::perspective(glm::radians(60.0f), (float)window->GetWindowWidth() / window->GetWindowHeight(), 0.01f, 1000.0f));
+
+    view = &View::GetInstance();
+
     return success;
 }
 
