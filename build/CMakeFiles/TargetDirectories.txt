@@ -1,3 +1,0 @@
-/home/ivan/Projects/c++/dm/build/CMakeFiles/dm.dir
-/home/ivan/Projects/c++/dm/build/CMakeFiles/edit_cache.dir
-/home/ivan/Projects/c++/dm/build/CMakeFiles/rebuild_cache.dir
