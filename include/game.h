@@ -29,6 +29,7 @@ private:
     bool InitSDL();
     bool InitWindow();
     bool InitGL();
+    bool InitGLRules();
     bool InitGameObjects();
     bool Init();
     void PollEvents();

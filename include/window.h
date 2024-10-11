@@ -24,6 +24,9 @@ public:
     unsigned int GetWindowWidth();
     unsigned int GetWindowHeight();
 
+    bool SetMaxFPS(unsigned int fps);
+    unsigned int GetMaxFPS();
+
     bool ShouldClose();
     void SetShouldClose(bool should_close);
 
@@ -32,12 +35,17 @@ public:
     SDL_GLContext CreateContext();
     bool MakeContextCurrent(SDL_GLContext ctx);
 
+    bool ClearWindow();
+    bool SwapWindow();
+
+    float GetWaitTime(float dt);
+
     SDL_Window *GetWindow();
 
 private:
     SDL_Window *window;
     const char *title;
-    unsigned int width, height;
+    unsigned int width, height, max_fps;
     bool running;
 };
 

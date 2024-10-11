@@ -11,10 +11,7 @@ GLWindow::GLWindow(const char *title, unsigned int h_pos, unsigned int v_pos, un
     this->title = title;
     this->width = width;
     this->height = height;
-    if (window != nullptr)
-    {
-        std::cout << "Window created successfully\n";
-    }
+    this->max_fps = 60;
 }
 
 //
@@ -92,6 +89,34 @@ unsigned int GLWindow::GetWindowHeight()
 
 //
 //
+//  Sets the max fps for the window
+//
+//
+bool GLWindow::SetMaxFPS(unsigned int fps)
+{
+    if(fps = 0)
+    {
+        std::cout << "Invalid max fps: " << fps << std::endl;
+        return false;
+    }
+
+    this->max_fps = fps;
+
+    return true;
+}
+
+//
+//
+//  Gets the max fps for the window
+//
+//
+unsigned int GLWindow::GetMaxFPS()
+{
+    return this->max_fps;
+}
+
+//
+//
 //  Tests to see if the window should close
 //
 //
@@ -149,6 +174,53 @@ bool GLWindow::MakeContextCurrent(SDL_GLContext ctx)
     SDL_GL_MakeCurrent(this->window, ctx);
 
     return true;
+}
+
+//
+//
+//  Clears the window and checks for gl errors
+//
+//
+bool GLWindow::ClearWindow()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GLenum error = glGetError();
+    if(error != GL_NO_ERROR)
+    {
+        std::cout << "Error clearing the screen: " << error << std::endl;
+        return false;
+    }
+    return true;
+}
+
+//
+//
+//  Swaps the window buffers and checks for gl errors
+//
+//
+bool GLWindow::SwapWindow()
+{
+    SDL_GL_SwapWindow(this->window);
+
+    GLenum error = glGetError();
+    if(error != GL_NO_ERROR)
+    {
+        std::cout << "Error swapping the window: " << error << std::endl;
+        return false;
+    }
+
+    return true;
+}
+
+//
+//
+// Returns the wait time calculated with the current delta time
+//
+//
+float GLWindow::GetWaitTime(float dt)
+{
+    float frameTime = (float)(1 / this->max_fps) * 1000.0f;
+    return dt - frameTime;
 }
 
 //

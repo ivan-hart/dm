@@ -12,6 +12,7 @@ namespace Input
     extern const SDL_Scancode S;
     extern const SDL_Scancode D;
     extern const SDL_Scancode A;
+    extern const SDL_Scancode E;
     extern const SDL_Scancode SPACE;
     extern const SDL_Scancode ESCAPE;
 };
