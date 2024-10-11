@@ -44,6 +44,9 @@ jobs:
         vcpkg install sdl2:x64-windows glm:x64-windows
         echo "CMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" >> $GITHUB_ENV
 
+    - name: Create shaders directory
+      run: mkdir -p shaders
+
     - name: Configure CMake
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
