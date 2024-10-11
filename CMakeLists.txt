@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(dm VERSION 1.0)
+project(nomad-doom VERSION 1.0)
 
 set(SOURCES
     src/main.cpp
