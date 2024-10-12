@@ -9,6 +9,8 @@ set(SOURCES
     src/game.cpp
     src/resource_manager.cpp
     src/input_manager.cpp
+    src/projection.cpp
+    src/view.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
