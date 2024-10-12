@@ -38,17 +38,28 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y libsdl2-dev libglm-dev
 
+    - name: Install dependencies (Arch)
+      if: matrix.os == 'arch-latest'
+      run: |
+        sudo pacman -Sy sdl2 glm
+
     - name: Install dependencies (Windows)
       if: matrix.os == 'windows-latest'
       run: |
         vcpkg install sdl2:x64-windows glm:x64-windows
         echo "CMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT/scripts/buildsystems/vcpkg.cmake" >> $env:GITHUB_ENV
 
-    - name: Create shaders directory
-      run: mkdir -p shaders
-
     - name: Configure CMake (Ubuntu)
       if: matrix.os == 'ubuntu-latest'
+      run: >
+        cmake -B ${{ steps.strings.outputs.build-output-dir }}
+        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
+        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -S ${{ github.workspace }}
+
+    - name: Configure CMake (Arch)
+      if: matrix.os == 'arch-latest'
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
