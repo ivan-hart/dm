@@ -37,6 +37,16 @@ bool Game::InitSDL()
 
 //
 //
+//  Initalizes SDL2_image
+//
+//
+bool Game::InitSDLImage()
+{
+    return IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG;
+}
+
+//
+//
 //  Initalizes the main window and check if it is valid
 //
 //
@@ -119,6 +129,15 @@ bool Game::Init()
         std::cout << "Error initalizing SDL: " << SDL_GetError() << std::endl;
     } else {
         std::cout << "SDL initialized\n";
+    }
+
+    if (!InitSDLImage())
+    {
+        success = false;
+        std::cout << "Error initalizing SDL2_image " << IMG_GetError() << std::endl;
+
+    } else {
+        std::cout << "Initalized SDL2 Image\n";
     }
 
     if (!InitWindow())
