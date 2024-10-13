@@ -5,20 +5,9 @@ project(nomad-doom VERSION 1.0)
 set(SOURCES
     src/main.cpp
     src/glad.c
-    src/window.cpp
-    src/game.cpp
-    src/resource_manager.cpp
-    src/input_manager.cpp
-    src/projection.cpp
-    src/view.cpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
-
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    ${CMAKE_SOURCE_DIR}/shaders $<TARGET_FILE_DIR:${PROJECT_NAME}>/shaders
-)
 
 # Find required packages
 find_package(SDL2 REQUIRED)
